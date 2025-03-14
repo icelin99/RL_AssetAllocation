@@ -3,7 +3,7 @@ import gymnasium as gym
 from gymnasium import spaces
 import matplotlib.pyplot as plt
 
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.005
 DISCOUNT_FACTOR = 0.99
 EXPLORATION_RATE = 0.1
 PRECISION = 3
@@ -448,7 +448,7 @@ def train_QL_agent(env, agent, episodes=500):
 
         if episode % 50 == 0:
             print(f"Episode {episode}: Final Wealth = {float(state[0]):.2f}")
-    print("final_wealths:", final_wealths)
+    print("final_wealths:", final_wealths, len(final_wealths))
     decision_logger.print_summary()
     decision_logger.print_q_values(agent.q_values)
     return final_wealths
@@ -462,11 +462,10 @@ def plot_training_results(final_wealths, method):
         final_wealths (list): 每轮训练的最终财富
     """
     plt.figure(figsize=(12, 6))
-    plt.plot(
-        np.cumsum(final_wealths) / np.arange(1, len(final_wealths) + 1),
-        label="acumulated average wealth with " + method,
+    plt.plot(final_wealths,
+        label="average wealth with " + method,
     )
-    plt.title("acumulated wealth during training")
+    plt.title("wealth during training")
     plt.xlabel("episodes")
     plt.ylabel("average wealth")
     plt.legend()
