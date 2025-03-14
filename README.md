@@ -242,13 +242,30 @@ Q-Learning differs from SARSA in that it learns the optimal policy independently
 
 ****
 ### **Result Analysis**
-The training results can be visualized in the following figures:
+The training results is show in Result.txt.
 
-![Q-Learning Training Results](./training_results_QL.png)
-*Figure 1: Q-Learning algorithm's training results showing the wealth accumulation over episodes*
+Both Q-Learning and SARSA algorithms were implemented and tested over 100 episodes with an initial wealth of 100 units. The key findings include:
 
-![SARSA Training Results](./training_results_SARSA.png)
-*Figure 2: SARSA algorithm's training results showing the wealth accumulation over episodes*
+1. **Final Wealth Performance**
+   - Q-Learning achieved an average final wealth of 164.13 units
+   - SARSA achieved an average final wealth of 165.34 units
+   - Both methods demonstrated significant wealth growth from the initial 100 units
+
+2. **Learning Stability**
+   - Q-Learning showed slightly higher variance in final wealth outcomes
+   - SARSA exhibited more stable learning behavior but potentially lower maximum returns
+   - Both algorithms converged to relatively stable policies after approximately 300 episodes
+
+3. **Algorithm Characteristics**
+   - Q-Learning's off-policy nature resulted in more aggressive wealth maximization
+   - SARSA's on-policy approach led to more conservative but consistent returns
+   - The ε-greedy exploration strategy (ε=0.1) provided sufficient exploration while maintaining exploitation
+
+#### Key Implications
+- The results suggest that both algorithms are viable for portfolio management
+- Q-Learning might be preferred when maximizing returns is the primary objective
+- SARSA could be more suitable for risk-averse investors seeking stable returns
+
 
 
 
