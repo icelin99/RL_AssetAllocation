@@ -127,9 +127,7 @@ $$b_{t} = [\frac{p^2(r-a)}{(1-p)(b-r)}e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{(b-r)}e
 $$C_t = a(1+r)^{T-t} \tag{20}$$
 Finally, we can get the Xt* and q function:
 $$X_t^{*} = \frac{\ln_{}{\frac{p(r-a)}{(1-p)(b-r)}} }{-(b-a)a(1+r)^{T-t-1}} $$
-$$
-Q_t^{*} = [\frac{p^2(r-a)}{(1-p)(b-r)}e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{(b-r)}e^{\frac{b-r}{b-a} }]^{T-t-1}e^{-a(1+r)^{T-t}W_t}[pe^{-a(1+r)^{T-t-1}(a-r)X_t}+(1-p)e^{a(1+r)^{T-t-1}(b-r)X_t}] 
-$$
+$Q_t^{*} = [\frac{p^2(r-a)}{(1-p)(b-r)}e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{(b-r)}e^{\frac{b-r}{b-a} }]^{T-t-1}e^{-a(1+r)^{T-t}W_t}[pe^{-a(1+r)^{T-t-1}(a-r)X_t}+(1-p)e^{a(1+r)^{T-t-1}(b-r)X_t}] $
 
 
 
