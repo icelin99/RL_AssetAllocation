@@ -53,7 +53,7 @@ Consider a financial model with two types of assets:
 
 We employ the Constant Absolute Risk Aversion (CARA) utility function as the reward function:
 
-\[U(W) = \frac{1 - e^{-aW}}{a} \tag{1}\]
+$$U(W) = \frac{1 - e^{-aW}}{a} \tag{1}$$
 
 Where:
 - \[a\] represents the coefficient of risk aversion
@@ -62,101 +62,75 @@ Where:
 The CARA utility function provides a mathematical representation of an investor's risk preferences, allowing for quantitative analysis of portfolio decisions under uncertainty.
 
 5. Target function:
-\[\max E[\gamma^{T-t}\cdot \frac{1 - e^{-\alpha W_T}}{\alpha}|(t, W_t)] \tag{2}\]
+$$\max E[\gamma^{T-t}\cdot \frac{1 - e^{-\alpha W_T}}{\alpha}|(t, W_t)] \tag{2}$$
 also can be written as:
-\[\max E[ \frac{- e^{-\alpha W_T}}{\alpha}|(t, W_t)] \tag{3}\]
+$$\max E[ \frac{- e^{-\alpha W_T}}{\alpha}|(t, W_t)] \tag{3}$$
 
 6. Wealth Dynamics:
 The evolution of wealth from time t to t+1 can be expressed as:
 
-\[W_{t+1} = X_t(1+Y_t) + (W_t-X_t)(1+r) \tag{4}\]
-\[= X_t(Y_t - r) + W_t(1 + r) \tag{5}\]
+$$W_{t+1} = X_t(1+Y_t) + (W_t-X_t)(1+r) \tag{4}$$
+$$= X_t(Y_t - r) + W_t(1 + r) \tag{5}$$
 
 Value Function at time \( t \) (for all \( t = 0, 1, \dots, T - 1 \)) for a given policy \( \pi = (\pi_0, \pi_1, \dots, \pi_{T-1}) \) as:
-\[ V_{\pi}(W_t) = \mathbb{E}_T\left[ -e^{-\alpha W_T} \mid (t, W_t) \right] \]
+$ V_{\pi}(W_t) = \mathbb{E}_T\left[ -e^{-\alpha W_T} \mid (t, W_t) \right] $
 
 Optimal Value Function at time \( t \) (for all \( t = 0, 1, \dots, T - 1 \)) as:
-\[ V^{*}(W_t) = \max_{\pi} V_{\pi}(W_t) = \max_{\pi} \mathbb{E}_T\left[ -e^{-\alpha W_T} \mid (t, W_t) \right] \]
+$ V^{*}(W_t) = \max_{\pi} V_{\pi}(W_t) = \max_{\pi} \mathbb{E}_T\left[ -e^{-\alpha W_T} \mid (t, W_t) \right] $
 
 The Action-Value Function \( Q_{\pi}(s, a) \) is a fundamental concept in reinforcement learning, used to evaluate the expected cumulative reward of taking action \( a \) in state \( s \) under policy \( \pi \). Its mathematical definition followed by Bellman Optimality Equation:
-\[
+$$
 V_{t}^{*}(W_{t}) = \max Q_{t}^{*}(W_{t}, X_{t}) = \max \left\{ \mathbb{E}_{Y_{t} }\left[ V_{t+1}^{*}(W_{t+1}) \right] \right\}
-\]  
-\[
-V_{T-1}^{*}(W_{T-1}) = \max Q_{T-1}^{*}(W_{T-1}, X_{T-1}) = \max \left\{ \mathbb{E}_{Y_{T-1} }\left[ \frac{- e^{-\alpha W_T}}{\alpha} \right] \right\} \tag{6}
-\]  
+$$
+
+$$V_{T-1}^{*}(W_{T-1}) = \max Q_{T-1}^{*}(W_{T-1}, X_{T-1}) = \max \left\{ \mathbb{E}_{Y_{T-1} }\left[ \frac{- e^{-\alpha W_T}}{\alpha} \right] \right\} \tag{6}$$
+
 
 And make a guess for the functional form of the Optimal Value Function as:
-\[V_t^*(W_t)=-b_t\cdot e^{-c_t\cdot W_t} \tag{7}\]
+$$V_t^*(W_t)=-b_t\cdot e^{-c_t\cdot W_t} \tag{7}$$
 
 So that Optimal Value Function can be written as:
-\[V_{t}^{*}(W_{t})=\max_{x_{t}}\{\mathbb{E}_{Y_{t}}[-b_{t+1}\cdot e^{-c_{t+1}\cdot W_{t+1}}]\}\]
+$$V_{t}^{*}(W_{t})=\max_{x_{t}}\{\mathbb{E}_{Y_{t}}[-b_{t+1}\cdot e^{-c_{t+1}\cdot W_{t+1}}]\}$$
 Using Equation 4, this can be written as:
-\[V_{t}^{*}(W_{t})=\max_{x_{t}}\{\mathbb{E}_{Y_{t}}[-b_{t+1}\cdot e^{-c_{t+1}\cdot(x_{t}\cdot(Y_{t}-r)+W_{t}\cdot(1+r))}]\} \tag{8}\]
+$$V_{t}^{*}(W_{t})=\max_{x_{t}}\{\mathbb{E}_{Y_{t}}[-b_{t+1}\cdot e^{-c_{t+1}\cdot(x_{t}\cdot(Y_{t}-r)+W_{t}\cdot(1+r))}]\} \tag{8}$$
 
 Using distribution of Y_t, we can get the optimal value function as:
-\[V_t^{*}(W_t) =   \max_{x_t} \left \{ -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot [pe^{-C_{t+1}X_t(a-r)}+(1-p)e^{-C_{t+1}X_t(b-r)}]\right \}  \tag{9}\]
-\[Q^{*}(W_t, X_t) =    -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot [pe^{-C_{t+1}X_t(a-r)}+(1-p)e^{-C_{t+1}X_t(b-r)}]  \tag{10}\]
+$$V_t^{*}(W_t) =   \max_{x_t} \left \{ -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot [pe^{-C_{t+1}X_t(a-r)}+(1-p)e^{-C_{t+1}X_t(b-r)}]\right \}  \tag{9}$$
+$$Q^{*}(W_t, X_t) =    -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot [pe^{-C_{t+1}X_t(a-r)}+(1-p)e^{-C_{t+1}X_t(b-r)}]  \tag{10}$$
 
 7. Get the Q-value function:
 Since the right-hand-side of Bellman Optimality Equation involves the max operation over Xt, we can say that the partial derivative of the term inside the max operation with respect to Xt is 0.
-\[
-\frac{\partial}{\partial X_t} \left \{ -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot [pe^{-C_{t+1}X_t(a-r)}+(1-p)e^{-C_{t+1}X_t(b-r)}] \right \} = 0
-\]
-\[
- p(a-r)\cdot e^{-C_{t+1}X_t(a-r)}+(1-p)(b-r)\cdot e^{-C_{t+1}X_t(b-r)} = 0 \tag{11}
-\]
-Dividing both sides by \[e^{-C_{t+1}X_t(a-r)}\] we get:
-\[
-p(a-r)+(1-p)(b-r) \cdot e^{-C_{t+1}X_t(b-a)} = 0 
-\]
+$$\frac{\partial}{\partial X_t} \left \{ -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot [pe^{-C_{t+1}X_t(a-r)}+(1-p)e^{-C_{t+1}X_t(b-r)}] \right \} = 0$$
+$$p(a-r)\cdot e^{-C_{t+1}X_t(a-r)}+(1-p)(b-r)\cdot e^{-C_{t+1}X_t(b-r)} = 0 \tag{11}$$
+Dividing both sides by $e^{-C_{t+1}X_t(a-r)}$ we get:
+$$p(a-r)+(1-p)(b-r) \cdot e^{-C_{t+1}X_t(b-a)} = 0 \tag{12}$$
 Then we get Xt: 
-\[
-X_t = \frac{\ln_{}{\frac{p(r-a)}{(1-p)(b-r)} } }{-C_{t+1}(b-a)} \tag{12}
-\]
+$$X_t = \frac{\ln_{}{\frac{p(r-a)}{(1-p)(b-r)} } }{-C_{t+1}(b-a)} \tag{12}$$
 under the condition that a-r not equal to 0 and (a-r) and (b-r) have opposites signs, otherwise Xt is not defined.
 
 Substituting Xt into Equation 9, we get the Q-value function:
-\[
-Q^{*}(W_t, X_t) =    -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot \frac{p(r-a)}{(1-p)(b-r)}[pe^{\frac{a-r }{b-a} }+  (1-p)e^{\frac{b-r}{b-a} }]  \tag{13}
-\]
+$$Q^{*}(W_t, X_t) =    -b_{t+1} \cdot e^{-C_{t+1}(1+r)W_t}\cdot \frac{p(r-a)}{(1-p)(b-r)}[pe^{\frac{a-r }{b-a} }+  (1-p)e^{\frac{b-r}{b-a} }]  \tag{13}$$
 
 After that, we can get Ct and bt
-\[
-C_{t} = C_{t+1}(1+r) \tag{14}
-\]
-\[
-b_{t} = b_{t+1} \cdot [\frac{p^2(r-a)}{(1-p)(b-r)} e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{b-a}e^{\frac{b-r}{b-a} }]  \tag{15}
-\]
+$$C_{t} = C_{t+1}(1+r) \tag{14}$$
+$$b_{t} = b_{t+1} \cdot [\frac{p^2(r-a)}{(1-p)(b-r)} e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{b-a}e^{\frac{b-r}{b-a} }]  \tag{15}$$
 
 From Equation 6, we can get:
-\[
-V_{T-1}^{*}(W_{T-1}) = \max_{X_{T-1}}\{ E_Y [\frac{-e^{-aW_T}}{a} ]\} 
-\]
-\[
-V_{T-1}^{*}(W_{T-1})= \frac{1}{a} (e^{-aW_{T-1}}(1+r)[pe^{-aX_{T-1}(a-r)}+(1-p)e^{-aX_{T-1}(b-r)}]) \tag{16}
-\]
+$$V_{T-1}^{*}(W_{T-1}) = \max_{X_{T-1}}\{ E_Y [\frac{-e^{-aW_T}}{a} ]\}$$
+$$V_{T-1}^{*}(W_{T-1})= \frac{1}{a} (e^{-aW_{T-1}}(1+r)[pe^{-aX_{T-1}(a-r)}+(1-p)e^{-aX_{T-1}(b-r)}]) \tag{16}$$
 Then we can ger bT-1 and CT-1:
-\[
-b_{T-1} = pe^{-aX_{T-1}(a-r)}+(1-p)e^{-aX_{T-1}(b-r)}\tag{17}
-\]
-\[
-C_{T-1} = a(1+r) \tag{18}
-\]
+$$b_{T-1} = pe^{-aX_{T-1}(a-r)}+(1-p)e^{-aX_{T-1}(b-r)}\tag{17}$$
+$$C_{T-1} = a(1+r) \tag{18}$$
+
 Through backward induction, we obtain:
-\[
-b_t = [\frac{p^2(r-a)}{(1-p)(b-r)}e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{(b-r)}e^{\frac{b-r}{b-a} }]^{T-t}\tag{19}
-\]
-\[
-C_t = a(1+r)^{T-t} \tag{20}
-\]
+$$b_{t} = [\frac{p^2(r-a)}{(1-p)(b-r)}e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{(b-r)}e^{\frac{b-r}{b-a} }]^{T-t-1}e^{-a(1+r)^{T-t}W_t}[pe^{-a(1+r)^{T-t-1}(a-r)X_t}+(1-p)e^{a(1+r)^{T-t-1}(b-r)X_t}] \tag{19}$$
+$$C_t = a(1+r)^{T-t} \tag{20}$$
 Finally, we can get the Xt* and q function:
-\[
-    X_t^{*} = \frac{\ln_{}{\frac{p(r-a)}{(1-p)(b-r)}} }{-(b-a)a(1+r)^{T-t-1}} \tag{21}
-\]
-\[
+$$X_t^{*} = \frac{\ln_{}{\frac{p(r-a)}{(1-p)(b-r)}} }{-(b-a)a(1+r)^{T-t-1}} $$
+$$Q_t^{*} = [\frac{p^2(r-a)}{(1-p)(b-r)}e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{(b-r)}e^{\frac{b-r}{b-a} }]^{T-t-1}e^{-a(1+r)^{T-t}W_t}[pe^{-a(1+r)^{T-t-1}(a-r)X_t}+(1-p)e^{a(1+r)^{T-t-1}(b-r)X_t}] $$
+$$
 Q_t^{*} = [\frac{p^2(r-a)}{(1-p)(b-r)}e^{\frac{a-r}{b-a} }+\frac{p(r-a)}{(b-r)}e^{\frac{b-r}{b-a} }]^{T-t-1}e^{-a(1+r)^{T-t}W_t}[pe^{-a(1+r)^{T-t-1}(a-r)X_t}+(1-p)e^{a(1+r)^{T-t-1}(b-r)X_t}]
-\]
+$$
 
 ****
 
