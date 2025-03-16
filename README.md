@@ -78,7 +78,7 @@ python AssetAllocation_QL.py
 python AssetAllocation_DQN.py
 ```
 
-* The final asset allocation policies are recorded in `results_QL.txt` and `results_DQN.txt`. Partial of them are shown below.
+* The final asset allocation policies are recorded in `training_results_QL_CARA.txt`, `training_results_QL_basic.txt`, `training_results_DQN_CARA.txt` and `training_results_DQN_basic.txt`. Partial of them are shown below.
 
   ```
   State: 100	Action:1.0
@@ -93,11 +93,12 @@ python AssetAllocation_DQN.py
   State: 190.0	Action:1.0
   ```
 
-* The performances of two algorithms are shown in  `training_results_QL.png` and `training_results_DQN.png`.
+* The performances of two algorithms are shown in `training_results_QL_CARA.png`, `training_results_QL_basic.png`, `training_results_DQN_CARA.png` and `training_results_DQN_basic.png`.
 
 <center>
-	<img src="./training_results_DQN.png"/>
+	<img src="./training_results_DQN_CARA.png"/>
 </center>
 
-<center> <img src="./training_results_QL.png"/> </center>
-
+<center>
+	<img src="./training_results_QL_CARA.png"/>
+</center>
