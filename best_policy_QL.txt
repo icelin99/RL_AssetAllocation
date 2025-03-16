@@ -1,0 +1,10 @@
+State: 100	Action:1.0
+State: 100.0	Action:1.0
+State: 110.0	Action:1.0
+State: 120.0	Action:1.0
+State: 130.0	Action:1.0
+State: 140.0	Action:1.0
+State: 160.0	Action:1.0
+State: 170.0	Action:1.0
+State: 180.0	Action:0.8
+State: 200.0	Action:0.5
