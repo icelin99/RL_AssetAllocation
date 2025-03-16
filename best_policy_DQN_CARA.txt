@@ -1,0 +1,10 @@
+State: 100	Action:1.0
+State: 108.3	Action:1.0
+State: 116.87	Action:1.0
+State: 126.99	Action:1.0
+State: 137.72	Action:0.4
+State: 144.47	Action:1.0
+State: 155.38	Action:1.0
+State: 166.13	Action:0.9
+State: 179.89	Action:1.0
+State: 193.91	Action:1.0
