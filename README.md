@@ -96,10 +96,9 @@ python AssetAllocation_DQN.py
 * The performances of two algorithms are shown in `training_results_QL_CARA.png`, `training_results_QL_basic.png`, `training_results_DQN_CARA.png` and `training_results_DQN_basic.png`.
 
 <center>
-	<img src="./training_results_DQN_basic.png"/>
+	<img src="./training_results_DQN_basic.png" width=80%/>
 </center>
 
-
 <center>
-	<img src="./training_results_QL_CARA.png"/>
+	<img src="./training_results_QL_CARA.png" width=80%/>
 </center>
