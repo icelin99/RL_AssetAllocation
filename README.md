@@ -54,7 +54,7 @@ Considering the practical constraints of asset allocation problems, we designed 
 
 5. **Reward Function**
    - Based on Constant Absolute Risk Aversion (CARA) utility function
-   - $U(W) = -e^{-aW}$
+   - $U(W) = \frac{W^{1-\rho}}{1-\rho}$
    - Risk aversion coefficient (a) = 1.0
 
 6. **Learning Parameters**
