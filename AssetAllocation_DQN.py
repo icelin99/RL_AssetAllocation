@@ -92,7 +92,7 @@ def power_utility_function(wealth, rho):
     return (wealth ** (1 - rho)) / (1 - rho)
 
 # CARA reward funciton
-def get_reward_CARA(current_wealth, initial_wealth, step, is_terminal):
+def get_reward_CARA(current_wealth, initial_wealth, rho):
     if current_wealth < 0:
         return -100  # penality for negative wealth
     else:
